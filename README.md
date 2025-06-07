@@ -33,3 +33,25 @@ CSV file is named googleplaystore.csv and placed in local directory before uploa
 ```bash
 git clone https://github.com/DhananjiMadhushika/App-Usage-Trends-and-Category-Popularity-using-MapReduce.git
 cd App-Usage-Trends-and-Category-Popularity-using-MapReduce/AppTrendsMR
+
+
+```
+### Step 2: Compile the Java Code
+
+```bash
+mkdir build
+javac -classpath `hadoop classpath` -d build AppTrendsDriver.java CategoryCountMapper.java CategoryCountReducer.java
+
+```
+
+### Step 3: Create the JAR File
+
+```bash
+jar -cvf app-trends.jar -C build/ .
+
+```
+### Step 4: Upload Dataset to HDFS
+
+```bash
+#copy the CSV file to Linux home
+cp /mnt/c/Users/Subhanya/Downloads/googleplaystore.csv ~/
