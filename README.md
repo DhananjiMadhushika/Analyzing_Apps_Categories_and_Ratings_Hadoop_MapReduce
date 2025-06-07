@@ -6,7 +6,7 @@ This project demonstrates the use of Apache Hadoop's MapReduce framework to anal
 
 ---
 
-## 📂 Dataset
+## Dataset
 
 - Source: [Google Play Store Apps Dataset](https://www.kaggle.com/datasets/lava18/google-play-store-apps)
 - Format: CSV
@@ -17,7 +17,7 @@ CSV file is named googleplaystore.csv and placed in local directory before uploa
 
 ---
 
-## 🧰 Technologies Used
+## Technologies Used
 
 - Apache Hadoop (Standalone Mode on WSL Ubuntu)
 - Java (JDK 8 or above)
@@ -69,10 +69,14 @@ hadoop jar app-trends.jar AppTrendsDriver /input /output
 
 ```
 
-### Step 6: View Results Directly
+### Step 6: View Results
 
 ```bash
 hadoop fs -cat /output/part-r-00000
 
 ```
 
+## References
+
+* [kaggle - Google Play Store Apps Dataset](https://www.kaggle.com/datasets/lava18/google-play-store-apps)
+* [Hadoop MapReduce Tutorial](https://hadoop.apache.org/docs/stable/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)
