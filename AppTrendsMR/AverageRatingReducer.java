@@ -1,20 +1,29 @@
 import java.io.IOException;
-import org.apache.hadoop.io.*;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class AverageRatingReducer extends Reducer<Text, FloatWritable, Text, FloatWritable> {
-    public void reduce(Text key, Iterable<FloatWritable> values, Context context) throws IOException, InterruptedException {
-        float sum = 0;
+public class AverageRatingReducer extends Reducer<Text, Text, Text, Text> {
+    private Text result = new Text();
+
+    @Override
+    public void reduce(Text key, Iterable<Text> values, Context context)
+            throws IOException, InterruptedException {
+        double sum = 0;
         int count = 0;
 
-        for (FloatWritable val : values) {
-            sum += val.get();
-            count++;
+        for (Text val : values) {
+            try {
+                sum += Double.parseDouble(val.toString());
+                count++;
+            } catch (NumberFormatException e) {
+                // Skip invalid values
+            }
         }
 
         if (count > 0) {
-            float avg = sum / count;
-            context.write(key, new FloatWritable(avg));
+            double average = sum / count;
+            result.set(String.format("%.2f", average));
+            context.write(key, result);
         }
     }
 }
