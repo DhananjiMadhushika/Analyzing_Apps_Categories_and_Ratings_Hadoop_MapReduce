@@ -1,6 +1,6 @@
 # App Category Trends Analysis using MapReduce
 
-## 📌 Project Overview
+## Project Overview
 
 This project demonstrates the use of Apache Hadoop's MapReduce framework to analyze the popularity of app categories using the Google Play Store dataset. The goal is to count the number of apps available in each category and identify the most common types of applications on the Play Store.
 
