@@ -31,8 +31,8 @@ CSV file is named googleplaystore.csv and placed in local directory before uploa
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/DhananjiMadhushika/App-Usage-Trends-and-Category-Popularity-using-MapReduce.git
-cd App-Usage-Trends-and-Category-Popularity-using-MapReduce/AppTrendsMR
+git clone https://github.com/DhananjiMadhushika/Analyzing_App_Categories_Hadoop_MapReduce
+cd Analyzing_App_Categories_Hadoop_MapReduce/AppTrendsMR
 
 
 ```
@@ -53,5 +53,26 @@ jar -cvf app-trends.jar -C build/ .
 ### Step 4: Upload Dataset to HDFS
 
 ```bash
-#copy the CSV file to Linux home
+# Copy the CSV file to Linux home
 cp /mnt/c/Users/Subhanya/Downloads/googleplaystore.csv ~/
+
+# Upload it to HDFS
+hadoop fs -mkdir /input
+hadoop fs -put ~/googleplaystore.csv /input/
+
+```
+
+### Step 5: Run the MapReduce Job
+
+```bash
+hadoop jar app-trends.jar AppTrendsDriver /input /output
+
+```
+
+### Step 6: View Results Directly
+
+```bash
+hadoop fs -cat /output/part-r-00000
+
+```
+
